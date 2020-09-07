@@ -1,0 +1,25 @@
+body{
+    height: 100%;
+    margin: 0px;
+    
+	overflow: hidden;
+	transition-duration: 0.5s;
+}
+
+#main {
+	
+  transition: all .5s ease-in-out;
+}
+
+.slide {
+    height: 80%;
+}
+
+
+#downscroller {
+	
+  	user-select: none;
+	position: fixed;
+    bottom: 1.5em;
+    left:50%;
+}
