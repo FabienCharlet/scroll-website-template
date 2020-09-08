@@ -71,7 +71,9 @@ var nbSlides;
 var currentScrollPosition = 0;
 var scrollingAskedTime = 0;
 var currentSlideScrolling = false;
+var slidesDiv;
 var heights = [0];
+var debugLog = false;
 
 docReady(function() {
 	
@@ -81,12 +83,15 @@ docReady(function() {
 
 function log(text) {
 	
-	console.log(text 
-			+ ' [currentSlide=' + currentSlide 
-			+ ', currentScrollPosition='+currentScrollPosition
-			+ ', scrollingAskedTime='+scrollingAskedTime
-			+ ', currentSlideScrolling='+currentSlideScrolling
-	);
+	if (debugLog) {
+		
+		console.log(text 
+				+ ' [currentSlide=' + currentSlide 
+				+ ', currentScrollPosition='+currentScrollPosition
+				+ ', scrollingAskedTime='+scrollingAskedTime
+				+ ', currentSlideScrolling='+currentSlideScrolling
+		);
+	}
 }
 
 function init() {
@@ -94,7 +99,7 @@ function init() {
 	downScrollerDiv = document.getElementById("downscroller");
 	mainDiv = document.getElementById("main");
 	
-	let slidesDiv = document.getElementsByClassName("slide");
+	slidesDiv = document.getElementsByClassName("slide");
 	nbSlides = slidesDiv.length;
 
 	let slideHeight = 0;
@@ -119,21 +124,28 @@ function detectswipe() {
 	document.body.addEventListener('touchstart',function(e){
 
 		startSwipeY = e.touches[0].screenY;
+		currentSwipeY = startSwipeY;
+		slidesDiv[currentSlide].innerHTML = 'Start Swipe = ' + startSwipeY;
 	  },false);
 
 	document.body.addEventListener('touchmove',function(e){
 
 		currentSwipeY = e.touches[0].screenY;
+		slidesDiv[currentSlide].innerHTML += '<br>Keep Swipe = ' + currentSwipeY;
 	  },false);
 	
 	document.body.addEventListener('touchend',function(e){
 
+		slidesDiv[currentSlide].innerHTML += '<br>End Swipe = ' + currentSwipeY;
+		
 		if ( (currentSwipeY - minSwipeYDelta > startSwipeY) || (currentSwipeY + minSwipeYDelta < startSwipeY) ) {
-			
+
+			slidesDiv[currentSlide].innerHTML += '<br>Swipe validated ' + (down ? 'down' : 'up');
 			down = currentSwipeY < startSwipeY;
+
+			launchScroll(down);
 		}
 
-		launchScroll(down);
 	  },false);
 }
 
