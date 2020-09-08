@@ -67,7 +67,6 @@ var loaded = false;
 var currentSlide = 0;
 var mainDiv;
 var downScrollerDiv;
-var slidesDiv;
 var nbSlides;
 var currentScrollPosition = 0;
 var scrollingAskedTime = 0;
@@ -94,47 +93,66 @@ function init() {
 	
 	downScrollerDiv = document.getElementById("downscroller");
 	mainDiv = document.getElementById("main");
-	slidesDiv = document.getElementsByClassName("slide");
-	nbSlides = slidesDiv.length;
 	
+	let slidesDiv = document.getElementsByClassName("slide");
+	nbSlides = slidesDiv.length;
+
+	let slideHeight = 0;
+	
+	for (var i = 0; i < slidesDiv.length; i++) {
+
+		heights.push(heights[i] + slidesDiv[i].clientHeight);
+	}
 	
 	document.body.onwheel = handleScroll;
+	detectswipe();
 }
 
+function detectswipe() {
+	
+	let minSwipeYDelta = 50;  //min y swipe for vertical swipe
+	let startSwipeY = 0;
+	let currentSwipeY = 0;
+
+	let down = true;
+	
+	document.body.addEventListener('touchstart',function(e){
+
+		startSwipeY = e.touches[0].screenY;
+	  },false);
+
+	document.body.addEventListener('touchmove',function(e){
+
+		currentSwipeY = e.touches[0].screenY;
+	  },false);
+	
+	document.body.addEventListener('touchend',function(e){
+
+		if ( (currentSwipeY - minSwipeYDelta > startSwipeY) || (currentSwipeY + minSwipeYDelta < startSwipeY) ) {
+			
+			down = currentSwipeY < startSwipeY;
+		}
+
+		launchScroll(down);
+	  },false);
+}
 
 function changeSlide(down) {
 	
 	log('Change slide requested ' + (down ? 'down' : 'up'));
-	let nextSlide = currentSlide;
 	
-	if (down) {
+	let nextSlide = down ? currentSlide + 1 : currentSlide - 1;
+	
+	if (nextSlide >= nbSlides || nextSlide < 0) {
 		
-		if (currentSlide == nbSlides-1) {
-			return;
-		}
-
-		nextSlide = currentSlide + 1;
+		return;
 	}
-	else {
 	
-		if (currentSlide==0) {
-			
-			return;
-		}
-
-		nextSlide = currentSlide - 1;
-	}
 	currentSlideScrolling = true;
 
 	log('Current heights length ' + heights.length);
-	
-	if (nextSlide > heights.length-1) {
 
-		log('Compute scroll position for slide ' + nextSlide);
-		
-		heights.push(heights[currentSlide] + slidesDiv[currentSlide].clientHeight);
-	}
-	
+
 	mainDiv.style.transform = "translateY(-" + heights[nextSlide] + 'px)';
 	
 	currentSlide = nextSlide;
