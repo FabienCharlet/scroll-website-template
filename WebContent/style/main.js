@@ -70,6 +70,7 @@ var downScrollerDiv;
 var nbSlides;
 var currentScrollPosition = 0;
 var scrollingAskedTime = 0;
+var scrollingEndTime = 0;
 var currentSlideScrolling = false;
 var heights = [0];
 var debugConsole = false;
@@ -155,8 +156,6 @@ function changeSlide(down) {
 		
 		return;
 	}
-	
-	currentSlideScrolling = true;
 
 	log('Current heights length ' + heights.length);
 
@@ -181,21 +180,16 @@ function changeSlide(down) {
 function handleScroll(event) {
 	
 	log('New scroll requested');
-	
-    if ((Date.now() - scrollingAskedTime > 1500) && !currentSlideScrolling) {
 
-    	if (event.deltaY > 0) {
+    if ( !currentSlideScrolling && (Date.now() - scrollingAskedTime > 1200)) {
 
-    		log('Down scroll');
-        	
-        	launchScroll(true);
-    	} 
-    	else {
+    	currentSlideScrolling = true;
 
-    		log('Up scroll');
-        	
-        	launchScroll(false);
-    	}
+    	scrollingAskedTime = Date.now();
+
+		log('scroll');
+    	
+    	launchScroll(event.deltaY > 0);
 	}
     else {
 
@@ -204,8 +198,6 @@ function handleScroll(event) {
 }
 
 function launchScroll(down) {
-
-	scrollingAskedTime = Date.now();
 	
 	log('Launch scroll');
 	
