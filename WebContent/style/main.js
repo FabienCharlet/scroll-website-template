@@ -78,7 +78,7 @@ var debugConsole = false;
 docReady(function() {
 	
 	init();
-	downScrollerDiv.innerHTML = '<span onclick="launchScroll(true);">V</span>';
+	downScrollerDiv.innerHTML = '<a href="#" onclick="launchScroll(true);"><img src="images/downscroll-dark.png" width="50" height="50"></a>';
 });
 
 function log(text) {

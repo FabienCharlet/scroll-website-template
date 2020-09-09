@@ -23,3 +23,18 @@ body{
     bottom: 1.5em;
     left:50%;
 }
+
+#downscroller a {
+	opacity: 0.5;
+	text-decoration: none;
+	-ms-transition: all 0.25s ease-in-out 0s;
+	-webkit-transition: all 0.25s ease-in-out 0s;
+	-moz-transition: all 0.25s ease-in-out 0s;
+	-o-transition: all 0.25s ease-in-out 0s;
+	transition: all 0.25s ease-in-out 0s;
+	width: 50px;
+}
+
+#downscroller a:hover {
+	opacity: 1;
+}
