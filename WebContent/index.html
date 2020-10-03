@@ -1,20 +1,29 @@
 <html>
 <head>
 	<link rel="stylesheet" href="css/main.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-</body>
 
 <div id="main">
-	<div class="slide" style="background-color: lightblue;">
+
+	<div class="topnav" id="navDiv">
+		<a href="#home" onclick="scrollToSlide(0); return false;">HOME</a> 
+		<a href="#bio" onclick="scrollToSlide(1); return false;">BIO</a> 
+		<a href="#objectifs" onclick="scrollToSlide(2); return false;">OBJECTIFS</a>
+		<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+			<i class="fa fa-bars"></i>
+		</a>
+	</div>
+	<div id="home" class="slide" style="background-image: url('img_site/begin.jpg');">
 		
 		
 	</div>
-	<div class="slide" style="background-color: blue;">
+	<div id="bio" class="slide" style="background-image: url('img_site/scary_path.jpg');">
 		
 		
 	</div>
-	<div class="slide" style="background-color: darkblue;">
+	<div id="objectifs" class="slide" style="background-image: url('img_site/balance.jpg');">
 		
 		
 	</div>
@@ -46,4 +55,6 @@
 
 <div id="downscroller"></div>
 <script type="text/javascript" src="style/main.js"></script>
+
+</body>
 </html>

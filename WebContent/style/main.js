@@ -66,6 +66,7 @@ var loaded = false;
 
 var currentSlide = 0;
 var mainDiv;
+var navDiv;
 var downScrollerDiv;
 var nbSlides;
 var currentScrollPosition = 0;
@@ -93,6 +94,7 @@ function init() {
 	
 	downScrollerDiv = document.getElementById("downscroller");
 	mainDiv = document.getElementById("main");
+	navDiv = document.getElementById("navDiv");
 	
 	let slidesDiv = document.getElementsByClassName("slide");
 	nbSlides = slidesDiv.length;
@@ -146,21 +148,13 @@ function detectswipe() {
 	  },false);
 }
 
-function changeSlide(down) {
-	
-	log('Change slide requested ' + (down ? 'down' : 'up'));
-	
-	let nextSlide = down ? currentSlide + 1 : currentSlide - 1;
-	
-	if (nextSlide >= nbSlides || nextSlide < 0) {
-		
-		return;
-	}
+
+function scrollToSlide(nextSlide) {
 
 	log('Current heights length ' + heights.length);
 
-
 	mainDiv.style.transform = "translateY(-" + heights[nextSlide] + 'px)';
+	navDiv.style.top = "" + heights[nextSlide] + "px";
 	
 	currentSlide = nextSlide;
 	log('Slide changed');
@@ -175,6 +169,21 @@ function changeSlide(down) {
 
 		downScrollerDiv.style.visibility = 'visible';
 	}
+	
+}
+
+function changeSlide(down) {
+	
+	log('Change slide requested ' + (down ? 'down' : 'up'));
+	
+	let nextSlide = down ? currentSlide + 1 : currentSlide - 1;
+	
+	if (nextSlide >= nbSlides || nextSlide < 0) {
+		
+		return;
+	}
+	
+	scrollToSlide(nextSlide);
 }
 
 function handleScroll(event) {
