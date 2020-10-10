@@ -2,54 +2,110 @@
 <head>
 	<link rel="stylesheet" href="css/main.css">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
 <div id="main">
 
 	<div class="topnav" id="navDiv">
-		<a href="#home" onclick="scrollToSlide(0); return false;">HOME</a> 
-		<a href="#bio" onclick="scrollToSlide(1); return false;">BIO</a> 
-		<a href="#objectifs" onclick="scrollToSlide(2); return false;">OBJECTIFS</a>
+		<div class="table">
+			<ul>
+				<li>
+					<a href="#home" onclick="scrollToSlide(0); return false;">
+					<font color="#E040FB">M</font><font color="#FF8A65">L</font><font color="#AED581">D</font> Coaching</a> 
+				</li>
+				<li>
+					<a href="#claire" onclick="scrollToSlide(1); return false;">Claire <font color="#E040FB">M</font>oallic</a>
+				</li>
+				<li>
+					<a href="#karin" onclick="scrollToSlide(2); return false;">Karin <font color="#FF8A65">L</font>atreille</a>
+				</li>
+				<li>
+					<a href="#benoit" onclick="scrollToSlide(3); return false;">Benoît <font color="#AED581">D</font>ebande</a>
+				</li> 
+			</ul>
+		</div>
 		<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 			<i class="fa fa-bars"></i>
 		</a>
-	</div>
+	</div> 
 	<div id="home" class="slide" style="background-image: url('img_site/begin.jpg');">
-		
-		
+		<h1 style="padding-left: 10%; padding-top: 10%;">
+			3 Coaches<br/>&nbsp;&nbsp;3 styles
+		</h1>
+		<h1 style="padding-left: 85%; padding-top: 10%;">
+			Certifiés<br/><img src="img_site/logo-cfip2016.png"/>
+		</h1>
 	</div>
-	<div id="bio" class="slide" style="background-image: url('img_site/scary_path.jpg');">
-		
-		
+	<div id="claire" class="slide" style="background-image: url('img_site/scary_path.jpg');">
+		<div class="bio">
+			<h1>
+				Claire <font color="#E040FB">M</font>oallic
+			</h1>
+			<p>
+Après 15 ans d’expérience professionnelle, les différents postes que j’ai occupés (de la recherche et développement au management d'équipe) m’ont permis de réfléchir à mes valeurs pour aligner mon chemin avec qui je suis.<br/><br/>
+Le métier de formatrice m’a ensuite permis de conjuguer deux passions : l’humain et les techniques scientifiques. Aider les autres dans leur parcours professionnel est devenu une évidence.<br/><br/>
+Les parcours de vie, professionnelle et personnelle, ne sont pas linéaires aujourd’hui. Cela ouvre des interrogations sur le sens, le fil rouge, ses valeurs, et touche à l’identité. Aussi je propose de vous accompagner pour toutes les questions autour de l’orientation professionnelle et de vie. 		
+			</p>
+		</div>
+		<div class="picture">
+			<img src="img_site/claire_moallic.png"/>
+		</div>
+		<div class="contact" style="border: 3px;">
+			<a href="tel:+3212345566"><i class="fa fa-phone"></i></a>
+			<a href="mailto:test@example.org"><i class="fa fa-envelope"></i></a>
+			<a href="#"><i class="fa fa-linkedin"></i></a>
+		</div>
 	</div>
-	<div id="objectifs" class="slide" style="background-image: url('img_site/balance.jpg');">
-		
-		
+	
+	<div id="karin" class="slide" style="background-image: url('img_site/balance.jpg');">
+		<div class="bio">
+			<h1>
+				Karin <font color="#FF8A65">L</font>atreille
+			</h1>
+			<p>
+“L’individu est le produit d’une histoire dont il cherche à devenir le sujet.”<br/><br/>
+Passionnée de lecture et d’écriture, cette citation de Vincent de Gaulejac illustre ma vision et ma méthode de coaching. Au travers de l’écoute active et de questionnements puissants, le coach accompagne son.a client.e dans l’appréhension et la réinterprétation de son histoire pour en faire quelque chose de neuf et adapté à son présent.<br/><br/>
+Anthropologue de formation, ayant vécu et travaillé dans une dizaine de pays différents, je suis particulièrement sensible à la contextualisation culturelle de l’expérience du.e la coaché.e. Mon parcours en RH et dans le secteur de l’humanitaire, mon bilinguisme Anglais-Français m’ouvrent aux questions de l’ici et de l’ailleurs, le besoin d’aventure et de stabilité, la nécessité de vivre dans l’urgence du présent tout en construisant le futur.
+			</p>
+		</div>
+		<div class="picture">
+			<img src="img_site/karin_latreille.png"/>
+		</div>
+		<div class="contact" style="border: 3px;">
+			<a href="tel:+3212345566"><i class="fa fa-phone"></i></a>
+			<a href="mailto:test@example.org"><i class="fa fa-envelope"></i></a>
+			<a href="#"><i class="fa fa-linkedin"></i></a>
+		</div>
 	</div>
-	<div class="slide" style="background-color: lightgreen;">
-		
-		
+	
+	<div id="benoit" class="slide" style="background-image: url('img_site/balloon_over_mountains.jpg');">
+		<div class="bio">
+			<h1>
+				Benoît <font color="#AED581">D</font>ebande
+			</h1>
+			<p>
+Après une formation universitaire de docteur en médecine, suivie d’une autre en informatique, j’occupe depuis plus de 30 ans des postes de direction dans le secteur hospitalier.  Ces différentes fonctions qui vont de la direction informatique à la direction générale en passant par la direction médicale, exercées en Belgique mais aussi à l’étranger, me permettent de bien appréhender la richesse et la spécificité du monde hospitalier tout en étant quotidiennement confronté aux réalités du management dans un milieu de professionnels.<br/><br/>
+Voici quelques années, j’ai ressenti le besoin de revenir à ma vocation première de médecin généraliste, et en retrouver tant la richesse du dialogue singulier que le contact interpersonnel.  J’ai donc entrepris une formation de 2 ans en hypnose Ericksonienne que j’ai terminée en 2020 et en parallèle une formation en coaching au CFIP que je terminerai fin 2020.  Suivra en 2021 une formation en PNL.<br/><br/>
+Avec mon expérience professionnelle et les outils dont j’acquiers chaque jour un peu plus la maîtrise, je propose au coaché de l’accompagner dans son cheminement personnel, que ce soit dans un contexte professionnel, familial ou individuel.
+			</p>
+		</div>
+		<div class="picture">
+			<img src="img_site/benoit_debande.png"/>
+		</div>
+		<div class="contact" style="border: 3px;">
+			<a href="tel:+3212345566"><i class="fa fa-phone"></i></a>
+			<a href="mailto:test@example.org"><i class="fa fa-envelope"></i></a>
+			<a href="#"><i class="fa fa-linkedin"></i></a>
+		</div>
 	</div>
-	<div class="slide" style="background-color: green;">
-		
-		
-	</div>
-	<div class="slide" style="background-color: darkgreen;">
-		
-		
-	</div>
-	<div class="slide" style="background-color: orange;">
-		
-		
-	</div>
-	<div class="slide" style="background-color: red;">
-		
-		
-	</div>
-	<div class="slide" style="background-color: darkred;">
-		
-		
+	<div class="legal">	
+		<div>
+			MLD Coaching<br/>
+			1 place de Bruxelles<br/>
+			Limal<br/>
+		</div>
 	</div>
 </div>
 
