@@ -98,19 +98,45 @@ function init() {
 	
 	let slidesDiv = document.getElementsByClassName("slide");
 	nbSlides = slidesDiv.length;
+	
+	computeDivHeights();
+	registerScrollEvent();
+	registerSwipeEvent();
+	registerWindowResizedEvent();
+}
 
-	let slideHeight = 0;
+function computeDivHeights() {
+
+	let slidesDiv = document.getElementsByClassName("slide");
+	heights = [0];
 	
 	for (var i = 0; i < slidesDiv.length; i++) {
 
 		heights.push(heights[i] + slidesDiv[i].clientHeight);
 	}
-	
-	document.body.onwheel = handleScroll;
-	detectswipe();
 }
 
-function detectswipe() {
+function registerWindowResizedEvent() {
+	
+	let eventHandle;
+	window.onresize = function(){
+	  clearTimeout(eventHandle);
+	  eventHandle = setTimeout(handleWindowResized, 100);
+	};
+}
+
+function handleWindowResized() {
+	
+	computeDivHeights();
+	scrollToSlide(currentSlide);
+}
+
+function registerScrollEvent() {
+
+	document.body.onwheel = handleScroll;
+}
+
+function registerSwipeEvent() {
 	
 	let minSwipeYDelta = 50;  //min y swipe for vertical swipe
 	let startSwipeY = 0;
